@@ -24,7 +24,7 @@ public ParamsController_OnRegisterTypes() {
 }
 
 public CWAPI_OnLoad() {
-    register_plugin("[CWAPI-A] Refill by Kill", "1.0.0", "ArKaNeMaN");
+    register_plugin("[CWAPI-A] Refill by Kill", "1.0.1", "ArKaNeMaN");
 
     iAbility = CWAPI_Abilities_Register(ABILITY_NAME);
 
@@ -34,23 +34,20 @@ public CWAPI_OnLoad() {
     CWAPI_Abilities_AddEventListener(iAbility, CWeapon_OnPlayerKilled, "@OnPlayerKilled");
 }
 
-@OnPlayerKilled(const T_CustomWeapon:iWeapon, const ItemId, const UserId, const Trie:tAbilityParams) {
+@OnPlayerKilled(const T_CustomWeapon:iWeapon, const ItemId, const VictimId, const KillerId, const Trie:tAbilityParams) {
     new E_BlockType:iRefillType;
     TrieGetCell(tAbilityParams, PARAM_BLOCK_TYPE_NAME, iRefillType);
-
-    new sItemClassname[32];
-    get_entvar(ItemId, var_classname, sItemClassname, charsmax(sItemClassname));
 
     switch (iRefillType) {
         case RefillType_Clip: {
             InstantReloadWeapon(ItemId);
         }
         case RefillType_BpAmmo: {
-            FillBpAmmoByItem(UserId, ItemId);
+            FillBpAmmoByItem(KillerId, ItemId);
         }
         case RefillType_Both: {
             InstantReloadWeapon(ItemId);
-            FillBpAmmoByItem(UserId, ItemId);
+            FillBpAmmoByItem(KillerId, ItemId);
         }
     }
 }
