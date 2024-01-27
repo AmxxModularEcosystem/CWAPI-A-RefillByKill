@@ -25,6 +25,7 @@ public ParamsController_OnRegisterTypes() {
 
 public CWAPI_OnLoad() {
     register_plugin("[CWAPI-A] Refill by Kill", "1.0.1", "ArKaNeMaN");
+    ParamsController_Init();
 
     iAbility = CWAPI_Abilities_Register(ABILITY_NAME);
 
