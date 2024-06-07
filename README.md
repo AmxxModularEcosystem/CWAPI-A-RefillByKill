@@ -6,7 +6,7 @@
 
 ## Требования
 
-- Custom Weapons API v0.8
+- [Custom Weapons API](https://github.com/AmxxModularEcosystem/CustomWeaponsAPI) v1.0.0-b1 или новее
 
 ## Параметры
 
